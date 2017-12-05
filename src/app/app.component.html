@@ -1,20 +1,251 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+  <!--#contenedor general-->
+  <div id="wrap" class="wrap">
+    <!--header-->
+     <header>
+       <!--menutop-->
+       <nav class="menutop">
+         <ul>
+           <li ><a href="javascript:;">Accesorios</a></li>
+           <li class="activo"><a href="javascript:;">Equipos</a></li>
+           <li><a href="javascript:;">Planes</a></li>
+           <li><a href="javascript:;">Otros</a></li>
+         </ul>
+       </nav><!--menutop-->
+ 
+       <!--box menuprincipal-->
+       <div class="menuprincipal">
+         <div class="row">
+           <div class="col s12">
+             <i class="material-icons iconmenu">menu</i>
+             <div class="logo">
+               <a href="javascript:;"><img src="assets/entel.png"></a>
+             </div>
+             <!--menu tabs-->
+             <ul id="tabs-swipe-demo" class="tabs">
+               <li class="tab"><a class="active waves-effect" href="#todos">Todos</a></li>
+               <li class="tab"><a class="waves-effect multimedia" href="#multimedia">MULTIMEDIA</a></li>
+               <li class="tab"><a class="waves-effect energia" href="#energia">ENERGÍA</a></li>
+               <li class="tab"><a class="waves-effect proteccion" href="#proteccion">PROTECCIÓN</a></li>
+               <li class="tab"><a class="waves-effect premium" href="#premium">PREMIUM</a></li>                      
+             </ul><!--menu tabs--> 
+             <!--buscador-->
+             <div class="buscador">
+               <form> 
+                   <input type="text" id="autocomplete-input" class="autocomplete" placeholder="¿Qué estás buscando?" autocomplete="off">
+                   <i class="material-icons prefix">search</i>
+               </form>
+             </div><!--buscador-->
+           </div>
+         </div>
+       </div><!--box menuprincipal-->
+     </header><!--header-->
+ 
+     <!--loading
+     <div class="loading">
+       <div class="preloader-wrapper big active">
+         <div class="spinner-layer spinner-blue-only">
+           <div class="circle-clipper left">
+             <div class="circle"></div>
+           </div><div class="gap-patch">
+             <div class="circle"></div>
+           </div><div class="circle-clipper right">
+             <div class="circle"></div>
+           </div>
+         </div>
+       </div>
+     </div>loading-->
+ 
+     <!--main-->
+     <main>
+     <!--todos-->
+     <div id="todos" class="col s12">
+       <div class="row">
+         
+         <!--filtros-->
+          <div class="filtros">
+             <div class="col s12"></div>
+             <div class="col s12 m12 l12 xl12">
+               <form class="center-align">
+                 <div class="input-field col s12 m5 right-align">
+                   <p class="right-align">Buscar por marca:</p>
+                 </div>
+                 <div class="input-field col s12 m5 l3">
+                   <select class="smarcas">
+                     <option value="0" selected>Todas las marcas</option>      
+                   </select>
+                 </div>
+               </form>
+             </div>
+          </div><!--filtros-->
+           
+          <div class="col s12 m6 l4 xl3 item" id="" *ngFor="let equipo of filtroPorEstado() ">
+            <!--<div *ngIf="equipo.is_active == 1"></div>-->
+                <p class="marca">{{equipo.provider}}</p>
+                <p >{{equipo.is_active}}</p>
+                <p class="nombre truncate">{{equipo.name}}</p>
+                <div class="xp-ct-img-prop">
+                  <div class="xp-type-color">
+                    <div class="xp-img-prop">
+                      <img [src]="equipo.main_image_resolutions.main_image_128" alt="" class="img-prop view">
+                    </div>
+                  </div>
+                </div>
+                <div class="boxprecios">
+                  <div><span class="titulo">Precio Normal</span><span class="valor dos">$12.990</span></div>
+                  <div><span class="titulo">Cliente Entel</span><span class="valor">$6.990</span></div>
+                </div>
+                <button style="margin-top:20px;" type="button" class="btn btn_entel btnDetalleProducto modal-trigger" id="id_75" href="#modal"><a class="modal-trigger" href="#modal">Ver detalle_</a></button>
+                <div class="xp-icons">
+                  <img src="http://www.entel.cl/catalogo-accesorios/images/body/icons/ico-android.png" data-item="0" alt="android">
+                  <span>{{equipo.network}}</span>
+                </div>
+            
+          
+          </div>
+     
+       </div>
+     </div><!--todos-->
+ 
+     <!--multimedia-->
+     <div id="multimedia" class="col s12">
+       <div class="row">
+         <!--filtros-->
+         <div class="filtros">
+             <div class="col s12"></div>
+             <div class="col s12 m12 l12 xl12">
+               <form class="center-align">
+                 <div class="input-field col s12 m5 right-align">
+                   <p class="right-align">Buscar por marca:</p>
+                 </div>
+                 <div class="input-field col s12 m5 l3">
+                   <select class="smarcas">
+                     <option value="0" selected>Todas las marcas</option>      
+                   </select>
+                 </div>
+               </form>
+             </div>
+           </div><!--filtros-->
+         
+       </div>
+     </div><!--multimedia-->
+ 
+     <!--energia-->
+     <div id="energia" class="col s12">
+       <div class="row">
+         <!--filtros-->
+         <div class="filtros">
+             <div class="col s12"></div>
+             <div class="col s12 m12 l12 xl12">
+               <form class="center-align">
+                 <div class="input-field col s12 m5 right-align">
+                   <p class="right-align">Buscar por marca:</p>
+                 </div>
+                 <div class="input-field col s12 m5 l3">
+                   <select class="smarcas">
+                     <option value="0" selected>Todas las marcas</option>      
+                   </select>
+                 </div>
+               </form>
+             </div>
+           </div><!--filtros-->     
+       </div>
+     </div><!--energia-->
+ 
+     <!--proteccion-->
+     <div id="proteccion" class="col s12">
+       <div class="row">
+         <!--filtros-->
+         <div class="filtros">
+             <div class="col s12"></div>
+             <div class="col s12 m12 l12 xl12">
+               <form class="center-align">
+                 <div class="input-field col s12 m5 right-align">
+                   <p class="right-align">Buscar por marca:</p>
+                 </div>
+                 <div class="input-field col s12 m5 l3">
+                   <select class="smarcas">
+                     <option value="0" selected>Todas las marcas</option>      
+                   </select>
+                 </div>
+               </form>
+             </div>
+           </div><!--filtros-->
+         
+       </div>
+     </div><!--proteccion-->
+ 
+     <!--premium-->
+     <div id="premium" class="col s12">
+       <div class="row">
+         <!--filtros-->
+         <div class="filtros">
+             <div class="col s12"></div>
+             <div class="col s12 m12 l12 xl12">
+               <form class="center-align">
+                 <div class="input-field col s12 m5 right-align">
+                   <p class="right-align">Buscar por marca:</p>
+                 </div>
+                 <div class="input-field col s12 m5 l3">
+                   <select class="smarcas">
+                     <option value="0" selected>Todas las marcas</option>      
+                   </select>
+                 </div>
+               </form>
+             </div>
+           </div><!--filtros-->
+         
+       </div>
+     </div><!--premium--> 
+     </main><!--main-->
+ 
+     <i id="subir" class="material-icons">&#xE316;</i>
+     <!--footer-->
+     <footer></footer><!--footer-->
+ 
+   </div><!--#contenedor general-->
+ 
+ 
+   <!-- Modal -->
+   <div id="modal" class="modal">
+   <a href="#!" class="modal-action modal-close waves-effect close"><i class="material-icons">&#xE5CD;</i></a>
+     <!--body modal -->
+     <div class="modal-content">
+       <div class="row ficha">
+         <div class="col s12 m6">
+           <div class="img">
+             <img class="imgm" src="">
+           </div>
+         </div>
+         <div class="col s12 m6">
+           <div class="m marca"></div>
+           <div class="m nombre"></div>
+           <!--detalles -->
+           <div class="m detalle">
+             
+           </div><!--detalles -->
+           <!--boxprecios -->
+           <div class="boxprecios">   
+               <div>
+                 <span class="titulo">Precio Normal</span>
+                 <span class="m valor dos"></span>
+               </div>
+               <div>
+                 <span class="m titulo">Cliente Entel</span>
+                 <span class="m valor ent"></span>
+               </div>
+             </div><!--boxprecios -->
+             <p class="titulo">Equipos compatibles:</p>
+             <div class="carouselbox">
+         
+       </div>
+             
+         </div>
+       </div>
+     </div><!--body modal -->
+     
+   </div><!-- Modal -->
+
+
+
 
