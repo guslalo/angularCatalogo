@@ -9,7 +9,6 @@ import { Equipo } from './models/equipos';
   
 })
 //var activo : boolean;
-
 export class AppComponent  {
   urlApi = 'http://192.168.1.215/catalogue/api/equipment/'; //la url a consumir
   title = 'app';
