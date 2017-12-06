@@ -72,7 +72,8 @@
                  </div>
                  <div class="input-field col s12 m5 l3">
                    <select class="smarcas">
-                     <option value="0" selected>Todas las marcas</option>      
+                     <option value="0" selected>Todas las marcas</option>
+                     <option *ngFor="let marca of proveedores" value="{{marca.id}}" >{{marca.name}}</option>      
                    </select>
                  </div>
                </form>

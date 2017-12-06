@@ -10,10 +10,12 @@ import { Equipo } from './models/equipos';
 })
 //var activo : boolean;
 export class AppComponent  {
-  urlApi = 'http://192.168.1.215/catalogue/api/equipment/'; //la url a consumir
+  equiposApi = 'https://manager.rinnolab.cl/catalogue/api/equipment/'; 
+  proveedoresApi = 'https://manager.rinnolab.cl/catalogue/api/provider/';//la url a consumir
   title = 'app';
   equiposActivos : any;
   equipos: Array<Equipo>;
+  proveedores : any;
    
   ngOnInit() {  
    /* for (let i in this.equipos) {
@@ -21,8 +23,8 @@ export class AppComponent  {
     }*/ 
   };
   constructor(private http:Http){
-    this.http.get(this.urlApi).subscribe(respuesta => this.equipos = respuesta.json().results);
-    
+    this.http.get(this.equiposApi).subscribe(respuesta => this.equipos = respuesta.json().results);
+    this.http.get(this.proveedoresApi).subscribe(respuesta => this.proveedores = respuesta.json().results);
     //this.ngOnInit();
   }  
 
@@ -31,7 +33,8 @@ export class AppComponent  {
 
   filtroPorEstado(){
     if(this.equipos != null){
-      return this.equipos.filter(r => r.is_active == true);
+      return this.equipos.filter(r => r.is_active == true );
+      
     }
   }
   
