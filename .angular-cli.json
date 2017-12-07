@@ -19,11 +19,11 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "css/materialize.css"
+        "assets/css/materialize.css"
       ],
       "scripts": [
-          "js/materialize.js",
-          "js/funciones.js"
+          "assets/js/materialize.js",
+          "assets/js/funciones.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

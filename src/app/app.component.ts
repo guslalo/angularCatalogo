@@ -5,7 +5,7 @@ import { Equipo } from './models/equipos';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./../sass/materialize.scss'],
+  styleUrls: ['./../assets/sass/materialize.scss'],
   
 })
 //var activo : boolean;
