@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
-import { Equipo } from './models/equipos';
+import { Http } from '@angular/http';
+import { Equipo, proveedormarca } from './models/equipos';
 
 @Component({
   selector: 'app-root',
@@ -8,56 +8,42 @@ import { Equipo } from './models/equipos';
   styleUrls: ['./../assets/sass/materialize.scss'],
   
 })
+
 //var activo : boolean;
 export class AppComponent  {
+  
+  public equiposUrl:string;
   equiposApi = 'https://manager.rinnolab.cl/catalogue/api/equipment/'; 
   proveedoresApi = 'https://manager.rinnolab.cl/catalogue/api/provider/';//la url a consumir
-  title = 'app';
-  equiposActivos : any;
+  //equiposActivos : Array<equipoActivo>;
   equipos: Array<Equipo>;
-  proveedores : any;
-  proveedor:any;
+  marcaproveedor:Array<proveedormarca>;
    
   ngOnInit() {  
-   /* for (let i in this.equipos) {
-      console.log(i);
-    }*/ 
+   
   };
   constructor(private http:Http){
-    this.http.get(this.equiposApi).subscribe(respuesta => this.equipos = respuesta.json().results);
-    this.http.get(this.proveedoresApi).subscribe(respuesta2 => this.proveedores = respuesta2.json().results);
-    //let name = this.proveedores.filter(inv => inv.name);
-    //console.log(proveedoresName);
-    //var  nombreProveedor = this.proveedores.some(inv => inv.name);
-/*for (let i of this.proveedores.name) {
-      console.log(i);
-    }*/
-    //this.ngOnInit();
-   // this.getProviders();
-  }  
-/*
-  getProviders(){
-     
-     this.http.get(this.proveedoresApi).subscribe(respuesta3 => this.proveedores = respuesta3.json().results.name);
-     let providers = this.proveedores;
-     console.log(providers);
-  }
 
-  getProvider(name:string){
-    let nameProvider = this.getProviders();
-  }*/
+    this.http.get(this.equiposApi).subscribe(resp => this.equipos = resp.json().results);
+    this.http.get(this.proveedoresApi).subscribe(resp2 => this.marcaproveedor = resp2.json().results);
+    
+  }  
+  getEquipos(){
+    //return this.http.get(this.equiposUrl).subscribe(Response => this.equipos = Response.json().results);
+  }
 
   filtroPorEstado(){
     if(this.equipos != null){
       return this.equipos.filter(r => r.is_active == true );
-      
-    }
-    /*if( this.equipos.filter(r => r.provider)== this.proveedores.filter(r => r.id) ){
-      return this.proveedores.filter(r => r.name);
-     // var proveedor = this.proveedores.filter(r => r.name);
-      
-    }
-    console.log( this.proveedores.filter(r => r.name));*/
+    };
+    //console.log( this.proveedores.filter(r => r.name));*/
+  }
+
+  filtroPorMarca(id){
+    if(this.marcaproveedor != null){
+      return this.marcaproveedor.filter(r => r.id == id );
+    };
+    //console.log( this.proveedores.filter(r => r.name));*/
   }
   
 

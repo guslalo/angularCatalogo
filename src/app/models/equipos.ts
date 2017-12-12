@@ -1,34 +1,3 @@
-export class AppComponenta  {
-    /*equiposApi = 'https://manager.rinnolab.cl/catalogue/api/equipment/'; 
-    proveedoresApi = 'https://manager.rinnolab.cl/catalogue/api/provider/';//la url a consumir
-    constructor(private http:Http){
-        this.http.get(this.equiposApi).subscribe(respuesta => this.equipos = respuesta.json().results);
-        this.http.get(this.proveedoresApi).subscribe(respuesta2 => this.proveedores = respuesta2.json().results);
-    }*/
-}
-export class equipoActivo {
-    id: number;
-    marca:string;
-    modelo:string;
-    main_image_resolutions: MainImageResolutions;
-    colores: Color[];
-    precioInicial:number;
-    compatible_accessories: number[];
-    is_active: boolean;
-}
-
-
-export class Links {
-    next?: any;
-    previous?: any;
-}
-
-export class ProductType {
-    id: number;
-    created: Date;
-    modified: Date;
-    name: string;
-}
 
 export class Color {
     id: number;
@@ -49,7 +18,6 @@ export class MainImageResolutions {
 
 export class Equipo {
     id: number;
-    product_type: ProductType;
     colors: Color[];
     compatible_accessories: number[];
     main_image_resolutions: MainImageResolutions;
@@ -72,13 +40,12 @@ export class Equipo {
     provider: number;
     background_color?: any;
     orientation?: any;
+    proveedormarca: proveedormarca;
 }
 
-export class RootObject {
-    links: Links;
-    count: number;
-    results: Equipo[];
-    pages: number;
+export class proveedormarca {
+    name: string;
+    id:number;
 }
-    
+
    

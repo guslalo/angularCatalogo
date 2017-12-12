@@ -35,15 +35,14 @@
                  <div class="input-field col s12 m5 l3">
                    <select class="smarcas">
                      <option value="0" selected>Todas las marcas</option>
-                     <option *ngFor="let marca of proveedores" value="{{marca.id}}" >{{marca.name}}</option>      
+                     <option *ngFor="let marca of marcaproveedor" value="{{marca.id}}" >{{marca.name}}</option>      
                    </select>
                  </div>
                </form>
              </div>
           </div><!--filtros-->
-           
-          <div class="col s12 m6 l4 xl3 item" id=""*ngFor="let equipo of filtroPorEstado() ">
-            <!--<div *ngIf="equipo.is_active == 1"></div>-->
+          <div class="col s12 m6 l4 xl3 item" *ngFor="let equipo of filtroPorEstado()" id="{{equipo.id}}" >
+            <!--<div *ngIf="equipo.is_active == 1"></div> {{equipo.proveedormarca2.name}}-->
                 <p class="marca">{{equipo.provider}}</p>
                 <p >{{equipo.is_active}}</p>
                 <p class="nombre truncate">{{equipo.name}}</p>
