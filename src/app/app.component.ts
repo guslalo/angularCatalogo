@@ -18,10 +18,11 @@ export class AppComponent  {
   //equiposActivos : Array<equipoActivo>;
   equipos: Array<Equipo>;
   marcaproveedor:Array<proveedormarca>;
-   
+
   ngOnInit() {  
    
   };
+  
   constructor(private http:Http){
 
     this.http.get(this.equiposApi).subscribe(resp => this.equipos = resp.json().results);
