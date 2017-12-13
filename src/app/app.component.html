@@ -42,8 +42,7 @@
              </div>
           </div><!--filtros-->
           <div class="col s12 m6 l4 xl3 item" *ngFor="let equipo of filtroPorEstado()" id="{{equipo.id}}" >
-                <p class="marca">{{equipo.provider}}</p>
-                <p >{{equipo.is_active}}</p>
+                <p class="marca">{{equipo.providerName}}</p>
                 <p class="nombre truncate">{{equipo.name}}</p>
                 <div class="xp-ct-img-prop">
                   <div class="xp-type-color">
@@ -53,8 +52,7 @@
                   </div>
                 </div>
                 <div class="boxprecios">
-                  <div><span class="titulo">Precio Normal</span><span class="valor dos">$12.990</span></div>
-                  <div><span class="titulo">Cliente Entel</span><span class="valor">$6.990</span></div>
+                  <div><span class="titulo">Cuota inicial desde:</span><span class="valor">$6.990</span></div>
                 </div>
                 <button style="margin-top:20px;" type="button" class="btn btn_entel btnDetalleProducto modal-trigger" id="id_75" href="#modal"><a class="modal-trigger" href="#modal">Ver detalle_</a></button>
                 <div class="xp-icons">

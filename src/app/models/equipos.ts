@@ -5,6 +5,10 @@ export class Color {
     color: string;
     equipment: number;
 }
+export class equipoCompleto {
+    id: number;
+    name: string;
+}
 
 export class MainImageResolutions {
     main_image_256: string;
@@ -38,6 +42,7 @@ export class Equipo {
     organization: number;
     sticker?: number;
     provider: number;
+    providerName:string;
     background_color?: any;
     orientation?: any;
     proveedormarca: proveedormarca;
