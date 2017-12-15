@@ -35,34 +35,39 @@
                  <div class="input-field col s12 m5 l3">
                    <select class="smarcas">
                      <option value="0" selected>Todas las marcas</option>
-                     <option *ngFor="let marca of marcaproveedor" value="{{marca.id}}" >{{marca.name}}</option>      
+                     <option *ngFor="let marca of equiposActivos" value="{{marca.provider}}" >{{marca.providerName}}</option>      
                    </select>
                  </div>
                </form>
              </div>
           </div><!--filtros-->
-          <div class="col s12 m6 l4 xl3 item" *ngFor="let equipo of filtroPorEstado()" id="{{equipo.id}}" >
-                <p class="marca">{{equipo.providerName}}</p>
-                <p class="nombre truncate">{{equipo.name}}</p>
-                <div class="xp-ct-img-prop">
-                  <div class="xp-type-color">
-                    <div class="xp-img-prop">
-                      <img [src]="equipo.main_image_resolutions.main_image_128" alt="" class="img-prop view">
-                    </div>
-                  </div>
+          <!-- <ul *ngFor="let color of coloresEquipo">
+
+            <li>{{color.name}}</li>
+          </ul>-->
+          <div class="col s12 m6 l4 xl3 item" *ngFor="let equipo of equiposActivos" id="{{equipo.id}}" >
+            <p class="marca">{{equipo.providerName}}</p>
+            <p class="nombre truncate">{{equipo.name}}</p>
+            <!--imagen-->
+            <div class="xp-ct-img-prop">
+              <div class="xp-type-color">
+                <div class="xp-img-prop">
+                  <img [src]="equipo.main_image_resolutions.main_image_128" alt="" class="img-prop view">
                 </div>
-                <div class="boxprecios">
-                  <div><span class="titulo">Cuota inicial desde:</span><span class="valor">$6.990</span></div>
-                </div>
-                <button style="margin-top:20px;" type="button" class="btn btn_entel btnDetalleProducto modal-trigger" id="id_75" href="#modal"><a class="modal-trigger" href="#modal">Ver detalle_</a></button>
-                <div class="xp-icons">
-                  <img src="http://www.entel.cl/catalogo-accesorios/images/body/icons/ico-android.png" data-item="0" alt="android">
-                  <span>{{equipo.network}}</span>
-                </div>
-            
-          
-          </div>
-     
+              </div>
+            </div><!--imagen-->
+            <div class="colores">
+              <ul><!--*ngFor="let color of equiposActivos.colorEquipo"-->
+                <li>{{equipo.colorEquipo}}</li>  
+              </ul>
+            </div>
+            <div class="boxprecios">
+              <div><span class="titulo">Precio prepago:</span><span class="valor">${{equipo.precio}}</span></div>
+            </div>
+            <button style="margin-top:20px;" type="button" class="btn btn_entel btnDetalleProducto modal-trigger" id="id_75" href="#modal">
+              <a class="modal-trigger" href="#modal">Ver detalle_</a>
+            </button> 
+          </div>  
        </div>
      </div><!--todos-->
  
@@ -133,29 +138,6 @@
          
        </div>
      </div><!--proteccion-->
- 
-     <!--premium-->
-     <div id="premium" class="col s12">
-       <div class="row">
-         <!--filtros-->
-         <div class="filtros">
-             <div class="col s12"></div>
-             <div class="col s12 m12 l12 xl12">
-               <form class="center-align">
-                 <div class="input-field col s12 m5 right-align">
-                   <p class="right-align">Buscar por marca:</p>
-                 </div>
-                 <div class="input-field col s12 m5 l3">
-                   <select class="smarcas">
-                     <option value="0" selected>Todas las marcas</option>      
-                   </select>
-                 </div>
-               </form>
-             </div>
-           </div><!--filtros-->
-         
-       </div>
-     </div><!--premium--> 
      </main><!--main-->
  
      <i id="subir" class="material-icons">&#xE316;</i>

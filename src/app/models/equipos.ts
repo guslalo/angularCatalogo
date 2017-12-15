@@ -1,14 +1,5 @@
 
-export class Color {
-    id: number;
-    name: string;
-    color: string;
-    equipment: number;
-}
-export class equipoCompleto {
-    id: number;
-    name: string;
-}
+
 
 export class MainImageResolutions {
     main_image_256: string;
@@ -22,7 +13,8 @@ export class MainImageResolutions {
 
 export class Equipo {
     id: number;
-    colors: Color[];
+    colors: color[];
+    colorEquipo:string;
     compatible_accessories: number[];
     main_image_resolutions: MainImageResolutions;
     name: string;
@@ -40,12 +32,18 @@ export class Equipo {
     size: string;
     polymorphic_ctype: number;
     organization: number;
-    sticker?: number;
+    sticker: number;
+    logoRed:any;
     provider: number;
     providerName:string;
-    background_color?: any;
-    orientation?: any;
-    proveedormarca: proveedormarca;
+    background_color: any;
+    precio:number;
+    imagered:any;
+}
+
+export class detalleEquipo {
+    equipment:number;
+    sale_price:number;
 }
 
 export class proveedormarca {
@@ -53,4 +51,15 @@ export class proveedormarca {
     id:number;
 }
 
-   
+export class stickerm {
+    image: string; 
+    id: number;    
+}
+
+export class color {
+    id: number;
+    name: string;
+    color: string;
+    equipment: number;
+}
+ 
