@@ -1,26 +1,15 @@
-
-import { Component, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Equipo, proveedormarca, detalleEquipo, stickerm, color } from './models/equipos';
-import { GeneralService } from './services/general.service';
-declare var $:any;//declaramos variable jquery
+import { Equipo, proveedormarca, detalleEquipo, stickerm, color } from './../models/equipos';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./../assets/sass/materialize.scss'],
-  providers:[GeneralService]
-  
-})
-
-
-export class AppComponent  {
-  
+@Injectable()
+export class GeneralService {
   equiposApi = 'https://manager.rinnolab.cl/catalogue/api/equipment/'; 
   proveedoresApi = 'https://manager.rinnolab.cl/catalogue/api/provider/';
   detealleEquipoApi = "https://manager.rinnolab.cl/catalogue/api/equipmentdetail/";
   stickerApi = "https://manager.rinnolab.cl/catalogue/api/sticker/";
   equipos: Array<Equipo>;
+  equipos2: Array<Equipo>;
   equiposActivos: Array<Equipo>;
   equipoDetalle:Array<detalleEquipo>;
   stickerm:Array<stickerm>;
@@ -30,33 +19,15 @@ export class AppComponent  {
   coloresEquipo:Array<color>;
   proveedoresActivos: Array<proveedormarca>;
 
+  constructor(private http:Http) { 
+    this.getEquipos();
+    this.getProveedor();
+    this.getEquipoDetalle();
+  }
+  getEquipos2(){
+    this.http.get(this.equiposApi).subscribe((resp) =>{    this.equipos2 = resp.json().results;  });
+    }
 
-  //stickersa:Array<stickerm>;
-  ngOnInit() {  
-    
-  };
-
-  constructor(private http:Http, ){//servicio:GeneralService
-      this.getEquipos();
-      this.getProveedor();
-      this.getEquipoDetalle();
-      //servicio.getcoloresEquipos();
-      //this.getSticker();  
-      //this.getcoloresEquipos(); 
-
-
-
-      
-  } 
-  
-
- /* getcoloresEquipos(){
-    this.http.get("https://manager.rinnolab.cl/catalogue/api/colorequipament/").subscribe((resp2) =>{ 
-      this.coloresEquipo = resp2.json().results;   
-    });
-  }*/
-
-  //Traer equipos
   getEquipos(){
     this.http.get(this.equiposApi).subscribe((resp) =>{    
       this.equipos = resp.json().results; 
@@ -88,20 +59,10 @@ export class AppComponent  {
   
         };
     });
+    
   }
  
-  getEquipoId(){
-    for (let item of this.equiposActivos){
-        /*if( obtenerId(id) == item.id){
-          
-        }*/
-    }
-    
-    /*
-    this.http.get(this.detealleEquipoApi).subscribe((resp2) =>{ 
-      this.equipoDetalle = resp2.json().results; 
-    });*/
-  }
+ 
 
   //Trae detalle equipo
   getEquipoDetalle(){
@@ -123,10 +84,7 @@ export class AppComponent  {
     this.http.get(this.proveedoresApi).subscribe((resp2) =>{ 
       this.marcaproveedor = resp2.json().results;    
     });
-  }
+  }/**/
 
-   obtenerId(id){
-    console.log(id); 
-  }
 
 }

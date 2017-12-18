@@ -45,7 +45,7 @@
 
             <li>{{color.name}}</li>
           </ul>-->
-          <div class="col s12 m6 l4 xl3 item" *ngFor="let equipo of equiposActivos" id="{{equipo.id}}" >
+          <div class="col s12 m6 l4 xl3 item" *ngFor="let equipo of equiposActivos"  id="{{equipo.id}}" >
             <p class="marca">{{equipo.providerName}}</p>
             <p class="nombre truncate">{{equipo.name}}</p>
             <!--imagen-->
@@ -58,13 +58,13 @@
             </div><!--imagen-->
             <div class="colores">
               <ul><!--*ngFor="let color of equiposActivos.colorEquipo"-->
-                <li>{{equipo.colorEquipo}}</li>  
+                <li *ngFor="let color of equipo.colors" class="{{color.name}}"></li>  
               </ul>
             </div>
             <div class="boxprecios">
               <div><span class="titulo">Precio prepago:</span><span class="valor">${{equipo.precio}}</span></div>
             </div>
-            <button style="margin-top:20px;" type="button" class="btn btn_entel btnDetalleProducto modal-trigger" id="id_75" href="#modal">
+            <button style="margin-top:20px;" (click)="obtenerId(equipo.id)" type="button" class="btn btn_entel modal-trigger" id="id_75" href="#modal" >
               <a class="modal-trigger" href="#modal">Ver detalle_</a>
             </button> 
           </div>  
@@ -145,8 +145,43 @@
  
    </div><!--#contenedor general-->
   
-  <!-- Modal -->
-  <app-modal></app-modal><!-- Modal -->
+
+   <div id="modal" class="modal">
+    <a href="#!" class="modal-action modal-close waves-effect close"><i class="material-icons">&#xE5CD;</i></a>
+    <!--body modal -->
+    <div class="modal-content" *ngFor="let equipo of equiposActivos" >
+      <div class="row ficha" id="" ><!--*ngIf="equipo.id = "*ngFor="let equipo of equiposActivos"-->
+        <div class="col s12 m6">
+          <div class="img">
+            <img class="imgm" src="">
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="m marca"></div>
+          <div class="m nombre">{{equipo.name}}</div>
+          <!--detalles -->
+          <div class="m detalle">
+            
+          </div><!--detalles -->
+          <!--boxprecios -->
+          <div class="boxprecios">   
+              <div>
+                <span class="titulo">Precio Normal</span>
+                <span class="m valor dos"></span>
+              </div>
+              <div>
+                <span class="m titulo">Cliente Entel</span>
+                <span class="m valor ent"></span>
+              </div>
+            </div><!--boxprecios -->
+            <p class="titulo">Equipos compatibles:</p>
+            <div class="carouselbox"></div>    
+        </div>
+      </div>
+    </div><!--body modal --> 
+  </div>
+  <!-- Modal -
+  <app-modal></app-modal> Modal -->
   
 
 

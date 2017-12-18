@@ -1979,11 +1979,9 @@ a {
 
 .valign-wrapper {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center; }
 
@@ -2219,11 +2217,9 @@ ul.staggered-list li {
     overflow: hidden;
     min-height: 50px;
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
-    -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
     padding: 10px 0px;
@@ -3583,7 +3579,6 @@ small {
     height: 500px; }
   .card.horizontal {
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
     .card.horizontal.small .card-image, .card.horizontal.medium .card-image, .card.horizontal.large .card-image {
@@ -3600,22 +3595,18 @@ small {
         width: auto; }
     .card.horizontal .card-stacked {
       display: -webkit-box;
-      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
       -ms-flex-direction: column;
       flex-direction: column;
       -webkit-box-flex: 1;
-      -webkit-flex: 1;
       -ms-flex: 1;
       flex: 1;
       position: relative; }
       .card.horizontal .card-stacked .card-content {
         -webkit-box-flex: 1;
-        -webkit-flex-grow: 1;
         -ms-flex-positive: 1;
         flex-grow: 1; }
   .card.sticky-action .card-action {
@@ -3720,15 +3711,12 @@ small {
   font-weight: 300;
   color: #fff;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
   cursor: default; }
@@ -3766,12 +3754,10 @@ small {
       background-color: #fff; }
   .tabs.tabs-fixed-width {
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
     .tabs.tabs-fixed-width .tab {
       -webkit-box-flex: 1;
-      -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
       flex-grow: 1; }
   .tabs .tab {
@@ -3812,12 +3798,10 @@ small {
 @media only screen and (max-width: 992px) {
   .tabs {
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
     .tabs .tab {
       -webkit-box-flex: 1;
-      -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
       flex-grow: 1; }
       .tabs .tab a {
@@ -4012,7 +3996,6 @@ button.btn-floating {
       opacity: 0; }
     .fixed-action-btn.toolbar ul {
       display: -webkit-box;
-      display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       top: 0;
@@ -4020,7 +4003,6 @@ button.btn-floating {
       z-index: 1; }
       .fixed-action-btn.toolbar ul li {
         -webkit-box-flex: 1;
-        -webkit-flex: 1;
         -ms-flex: 1;
         flex: 1;
         display: inline-block;
@@ -4323,7 +4305,6 @@ button.btn-floating {
 
 .collapsible-header {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   cursor: pointer;
@@ -4525,6 +4506,8 @@ label {
 ::-webkit-input-placeholder {
   color: #d1d1d1; }
 :-ms-input-placeholder {
+  color: #d1d1d1; }
+::-ms-input-placeholder {
   color: #d1d1d1; }
 ::placeholder {
   color: #d1d1d1; }
@@ -6751,7 +6734,6 @@ input[type=range]:focus::-ms-fill-upper {
 @media only screen and (min-width: 601px) {
   .picker__box {
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
   .picker__frame {
@@ -7021,14 +7003,12 @@ input[type=range]:focus::-ms-fill-upper {
 @media only screen and (min-width: 601px) {
   .picker__date-display {
     -webkit-box-flex: 1;
-    -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1; }
   .picker__weekday-display {
     display: block; }
   .picker__container__wrapper {
     -webkit-box-flex: 2;
-    -webkit-flex: 2;
     -ms-flex: 2;
     flex: 2; } }
 
@@ -11988,17 +11968,41 @@ header {
     .item .xp-icons img {
       margin-bottom: 30px; }
   .item .colores {
-    padding: 10px 0 0; }
+    padding: 0px 0px 5px 0px; }
     .item .colores ul {
       margin: 0px; }
       .item .colores ul li {
         display: inline-block;
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
         text-align: center;
-        cursor: pointer;
+        cursor: normal;
         padding: 0;
-        margin: 0 8px; }
+        margin: 0 8px;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid #999 !important; }
+        .item .colores ul li.Black {
+          background: black; }
+        .item .colores ul li.Silver {
+          background: #d1d2d4; }
+        .item .colores ul li.Gold {
+          background: #e6be8a; }
+        .item .colores ul li.Gray {
+          background: #96979c; }
+        .item .colores ul li.White {
+          background: #ffffff; }
+        .item .colores ul li.Brown {
+          background: #a7572c; }
+        .item .colores ul li.Chrome {
+          background: #e2e2e2; }
+        .item .colores ul li.Titan {
+          background: #474442; }
+        .item .colores ul li.Pink {
+          background: #e7bdb9; }
+        .item .colores ul li.Space Gray {
+          background: #424244; }
         .item .colores ul li span {
           display: inline-block;
           width: 18px;
