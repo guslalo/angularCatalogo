@@ -605,9 +605,102 @@ header {
 	background: #fff;
 	overflow: visible;
 	.detalle {
-		max-height: 110px;
+		/*max-height: 110px;
 		overflow: auto;
-		/*overflow-y: scroll;*/
+		overflow-y: scroll;*/
+		ul {
+			margin-left: 15px;
+			li {
+				color: #666;
+			}
+		}
+	}
+	.sticker {
+		width: 200px;
+		img{
+			width: 100%;
+		}
+	}
+	.colores {
+			padding:5px 0px 5px 0px;
+		ul {
+			margin:0px;
+			li {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				cursor: normal;
+				padding: 0;
+				margin: 0 8px;
+				-webkit-border-radius:50%;
+				border-radius:50%;
+				overflow: hidden;
+				border:1px solid #999 !important;
+				&.Black{
+					background:black;
+				}
+				&.Silver{
+					background:#d1d2d4;
+				}
+				&.Gold{
+					background:#e6be8a;
+				}
+				&.Gray{
+					background:#96979c;
+				}
+				&.White{
+					background:#ffffff;
+				}
+				&.Brown{
+					background:#a7572c;
+				}
+				&.Chrome{
+					background:#e2e2e2;
+				}
+				&.Titan{
+					background:#474442;
+				}
+				&.Pink{
+					background:#e7bdb9;
+				}
+				&.Space Gray{
+					background:#424244;
+				}		
+			}
+		}
+	}
+	.img {
+		height: 400px;
+		text-align: center;
+		img{
+			height:400px;
+			width: auto;
+		}
+	}
+	.nb {
+		
+	}
+	.itemlista {
+		width: 100%;
+		border-top: 2px solid #ccc;
+		display: inline-block;
+		padding: 20px 0px 20px 0px;
+		.titulo {
+			font-size: 16px;
+			line-height: 1;
+			color: #0053a4;
+		}
+		.valor {
+			width: 100%;
+			display: inline-block;
+			font-size: 34px;
+			font-weight: bold;
+			letter-spacing: -0.03em;
+			line-height: 1;
+			color: #ff6700;
+		}
+		/*border-bottom: 2px solid #ccc;*/
 	}
 	.nombre {
 		font-size: 29px !important;

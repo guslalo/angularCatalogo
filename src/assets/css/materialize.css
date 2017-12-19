@@ -12220,9 +12220,77 @@ header {
   background: #fff;
   overflow: visible; }
   .modal .detalle {
-    max-height: 110px;
-    overflow: auto;
-    /*overflow-y: scroll;*/ }
+    /*max-height: 110px;
+		overflow: auto;
+		overflow-y: scroll;*/ }
+    .modal .detalle ul {
+      margin-left: 15px; }
+      .modal .detalle ul li {
+        color: #666; }
+  .modal .sticker {
+    width: 200px; }
+    .modal .sticker img {
+      width: 100%; }
+  .modal .colores {
+    padding: 5px 0px 5px 0px; }
+    .modal .colores ul {
+      margin: 0px; }
+      .modal .colores ul li {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        cursor: normal;
+        padding: 0;
+        margin: 0 8px;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px solid #999 !important; }
+        .modal .colores ul li.Black {
+          background: black; }
+        .modal .colores ul li.Silver {
+          background: #d1d2d4; }
+        .modal .colores ul li.Gold {
+          background: #e6be8a; }
+        .modal .colores ul li.Gray {
+          background: #96979c; }
+        .modal .colores ul li.White {
+          background: #ffffff; }
+        .modal .colores ul li.Brown {
+          background: #a7572c; }
+        .modal .colores ul li.Chrome {
+          background: #e2e2e2; }
+        .modal .colores ul li.Titan {
+          background: #474442; }
+        .modal .colores ul li.Pink {
+          background: #e7bdb9; }
+        .modal .colores ul li.Space Gray {
+          background: #424244; }
+  .modal .img {
+    height: 400px;
+    text-align: center; }
+    .modal .img img {
+      height: 400px;
+      width: auto; }
+  .modal .itemlista {
+    width: 100%;
+    border-top: 2px solid #ccc;
+    display: inline-block;
+    padding: 20px 0px 20px 0px;
+    /*border-bottom: 2px solid #ccc;*/ }
+    .modal .itemlista .titulo {
+      font-size: 16px;
+      line-height: 1;
+      color: #0053a4; }
+    .modal .itemlista .valor {
+      width: 100%;
+      display: inline-block;
+      font-size: 34px;
+      font-weight: bold;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: #ff6700; }
   .modal .nombre {
     font-size: 29px !important; }
   .modal .close {

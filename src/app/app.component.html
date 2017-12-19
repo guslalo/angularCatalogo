@@ -151,33 +151,47 @@
    <div id="modal" class="modal">
     <a href="#!" class="modal-action modal-close waves-effect close"><i class="material-icons">&#xE5CD;</i></a>
     <!--body modal -->
-    <div class="modal-content" *ngFor="let equipo of equiposActivos" >
-      <div class="row ficha" id="" ><!--*ngIf="equipo.id = "*ngFor="let equipo of equiposActivos"-->
+    <div class="modal-content" *ngFor="let equipo of equipoId">
+      <div class="row ficha" id=""><!--*ngIf="equipo.id = "*ngFor="let equipo of equiposActivos *ngIf="!obtenerId(id)"-->
         <div class="col s12 m6">
           <div class="img">
-            <img class="imgm" src="">
-          </div>
+            <img [src]="equipo.main_image_resolutions.main_image_256" alt="" class="img-prop view">
+          </div>    
         </div>
         <div class="col s12 m6">
-          <div class="m marca"></div>
+          <div class="m marca">{{equipo.providerName}}</div>
           <div class="m nombre">{{equipo.name}}</div>
           <!--detalles -->
           <div class="m detalle">
-            
+            <ul>
+              <li>Tamaño de pantalla: {{equipo.screen}}"</li>
+              <li>Cámara delantera: {{equipo.frontal_camera}} MP</li>
+              <li>Cámara trasera :{{equipo.rear_camera}} MP</li>
+              <li>Redes: {{equipo.network}}</li>
+              <li>Dimensiones: {{equipo.size}}</li>
+              <li>Procesador: {{equipo.processor}}</li>        
+            </ul>
           </div><!--detalles -->
+          <div class="itemlista">
+            <span class="titulo">Colores disponibles:</span>  
+            <div class="colores">
+              <ul><!--*ngFor="let color of equiposActivos.colorEquipo"-->
+                <li *ngFor="let color of equipo.colors" class="{{color.name}}"></li>  
+              </ul>
+            </div>
+          </div>
           <!--boxprecios -->
-          <div class="boxprecios">   
-              <div>
-                <span class="titulo">Precio Normal</span>
-                <span class="m valor dos"></span>
+          <div class="itemlista">   
+            <div><span class="titulo">Precio prepago:</span><span class="valor">${{equipo.precio}}</span></div>
+          </div><!--boxprecios -->
+          <!--
+          <div class="itemlista">   
+              <div class="sticker">
+                  <img [src]="equipo.logoRed" alt="" class="img-prop view">
               </div>
-              <div>
-                <span class="m titulo">Cliente Entel</span>
-                <span class="m valor ent"></span>
-              </div>
-            </div><!--boxprecios -->
-            <p class="titulo">Equipos compatibles:</p>
-            <div class="carouselbox"></div>    
+          </div>boxprecios -->
+
+            <!--<div class="carouselbox"></div>   --> 
         </div>
       </div>
     </div><!--body modal --> 
