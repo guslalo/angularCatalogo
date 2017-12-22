@@ -1,9 +1,10 @@
-
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { Equipo, proveedormarca, detalleEquipo, stickerm, color } from './models/equipos';
 import { GeneralService } from './services/general.service';
+import * as $ from 'jquery/dist/jquery.min.js';
 declare var $:any;//declaramos variable jquery
+
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,7 @@ export class AppComponent  {
   proveedorId:number;
   coloresEquipo:Array<color>;
   proveedoresActivos: Array<proveedormarca>;
-
+  textoduro:string;
 
   //stickersa:Array<stickerm>;
   ngOnInit() {
@@ -38,10 +39,10 @@ export class AppComponent  {
 
   constructor(private http:Http, ){//servicio:GeneralService
     this.getEquipos();
-    this.getProveedor();
+    //this.getProveedor();
     this.getEquipoDetalle();
-    this.getSticker();
-
+    this.textoduro = "{{color.name}}";
+    //this.getSticker();
   }
 
 
@@ -51,13 +52,14 @@ export class AppComponent  {
       this.equipos = resp.json().results;
       this.equiposActivos = this.equipos.filter(r => r.is_active == true);
 
-
-
+        if(this.equiposActivos != null){
+          //alert("espera");
+        }
         for (let item of this.equiposActivos){
 
           //compara id de provider en equipiactivo y id en proveedores
-           var marca:Array<proveedormarca> = this.marcaproveedor.filter(m => m.id == item.provider);
-           item.providerName = marca[0].name;
+           /*var marca:Array<proveedormarca> = this.marcaproveedor.filter(m => m.id == item.provider);
+           item.providerName = marca[0].name;*/
 
             //trae precio prepago equipo
             var equipoDetalle:Array<detalleEquipo> = this.equipoDetalle.filter(me => me.equipment == item.id);
@@ -67,12 +69,11 @@ export class AppComponent  {
             item.logoRed = stickerm[0].image; */
 
         };
+      
     });
   }
 
   obtenerId(idSeleccionado){
-    //return idSeleccionado;
-    console.log(idSeleccionado);
     this.equipoId = this.equipos.filter(r => r.id == idSeleccionado);
   }
 
@@ -86,16 +87,13 @@ export class AppComponent  {
   getSticker(){
     this.http.get(this.stickerApi).subscribe((resp) =>{
       this.stickerm = resp.json().results;
-     /* for (let item of this.stickersa){
-        console.log(item);
-      }*/
     });
   }
   //Traer proveedor
-  getProveedor(){
+  /*getProveedor(){
     this.http.get(this.proveedoresApi).subscribe((resp2) =>{
       this.marcaproveedor = resp2.json().results;
     });
-  }
+  }*/
 
 }

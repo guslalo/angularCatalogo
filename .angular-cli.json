@@ -22,8 +22,8 @@
         "assets/css/materialize.css"
       ],
       "scripts": [
-          "assets/js/materialize.js",
-          "assets/js/funciones.js"
+        "assets/js/materialize.js",
+        "assets/js/funciones.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -12,7 +12,7 @@ body {
 main {
 	margin-top:107px;
 	z-index: 2;
-	display: none;
+	/*display: none;*/
 }
 header {
 	z-index: 3;
@@ -593,22 +593,23 @@ header {
 .loading {
 	width: 100%;
 	text-align: center;
-	/*height: 100vh;*/
+	height: 100vh;/**/
 	vertical-align: middle;
 	.preloader-wrapper {
 		display: inline-block;
 		vertical-align: middle;
-		margin-top: 30%;
+		margin-top:15%;
 	}
 }
 .modal {
 	background: #fff;
-	overflow: visible;
+	overflow: visible !important;
 	.detalle {
 		/*max-height: 110px;
 		overflow: auto;
 		overflow-y: scroll;*/
 		ul {
+			margin-top: 0px;
 			margin-left: 15px;
 			li {
 				color: #666;
@@ -633,8 +634,8 @@ header {
 				cursor: normal;
 				padding: 0;
 				margin: 0 8px;
-				-webkit-border-radius:50%;
-				border-radius:50%;
+				-webkit-border-radius:55%;
+				border-radius:55%;
 				overflow: hidden;
 				border:1px solid #999 !important;
 				&.Black{
@@ -679,18 +680,19 @@ header {
 		}
 	}
 	.nb {
-		
+
+	}
+	.titulo {
+		font-size: 16px;
+		line-height: 1;
+		color: #0053a4;
 	}
 	.itemlista {
 		width: 100%;
 		border-top: 2px solid #ccc;
 		display: inline-block;
 		padding: 20px 0px 20px 0px;
-		.titulo {
-			font-size: 16px;
-			line-height: 1;
-			color: #0053a4;
-		}
+		
 		.valor {
 			width: 100%;
 			display: inline-block;
@@ -704,6 +706,10 @@ header {
 	}
 	.nombre {
 		font-size: 29px !important;
+		margin-bottom: 10px;
+	}
+	.marca {
+		margin-bottom:5px !important;
 	}
 	.close {
 		color: #fff;

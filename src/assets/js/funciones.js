@@ -1,19 +1,23 @@
 //version final
-$(document).ready(function(){	
-
-
+$(document).ready(function(){
+    //$('select').material_select('destroy');	
+  
+    console.log("jquery document.ready iniciado");
+    $('.tooltipped').tooltip({delay: 50, html: true});
     $('ul.tabs').tabs({
         swipeable : false
     }); 
+    $(".marca").click(function(){
+       // alert("clikeado");
+    });
 
-
-$(".loading").hide();
-$("main").fadeIn("fast"); 
+//$(".loading").hide();
+//$("main").fadeIn("fast"); 
    // equiposrelacionados();
-    function loading() {
+    /*function loading() {
         $(".loading").hide();
         $("main").fadeIn("fast");    
-    }
+    }*/
 
    
 
@@ -76,9 +80,12 @@ $("main").fadeIn("fast");
 	//$('.tap-target').tapTarget();
 	$('#modal').modal();
 
-    $('select').material_select();
+    //
+    setTimeout(function(){
+        $('select').material_select();
+      },100);
    
-     
+   
        
 });
 
@@ -87,13 +94,9 @@ $("main").fadeIn("fast");
 
 $(window).on('load', function () {
 
-
+    //$('select').material_select();
   
 
 
 });
-
-/*$(document).ajaxComplete(function() {
-   alert("test");c
-});*/
 

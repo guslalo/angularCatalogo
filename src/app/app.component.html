@@ -2,13 +2,11 @@
   <div id="wrap" class="wrap">
     <!--header-->
     <app-header></app-header><!--header-->
-
-   
  
      <!--main-->
      <main>
      <!--todos-->
-     <div id="todos" class="col s12">
+     <div id="marca" class="col s12">
        <div class="row">
          
          <!--filtros-->
@@ -22,59 +20,59 @@
                  <div class="input-field col s12 m5 l3">
                    <select class="smarcas">
                      <option value="0" selected>Todas las marcas</option>
-                     <option *ngFor="let marca of equiposActivos" value="{{marca.provider}}" >{{marca.providerName}}</option>      
-                   </select>
+                     <option  *ngFor="let marca of equiposActivos" value="{{marca.provider.name}}" >{{marca.provider.name}}</option>      
+                   </select><!---->
                  </div>
                </form>
              </div>
           </div><!--filtros-->
-          <!-- <ul *ngFor="let color of coloresEquipo">
-            <li>{{color.name}}</li>
-          </ul>-->
 
-  <!--loading
-     <div class="loading">
-       <div class="preloader-wrapper big active">
-         <div class="spinner-layer spinner-blue-only">
-           <div class="circle-clipper left">
-             <div class="circle"></div>
-           </div><div class="gap-patch">
-             <div class="circle"></div>
-           </div><div class="circle-clipper right">
-             <div class="circle"></div>
-           </div>
-         </div>
-       </div>
-     </div>loading-->
-
-          <div class="col s12 m6 l4 xl3 item" *ngFor="let equipo of equiposActivos"  id="{{equipo.id}}" >
-            <p class="marca">{{equipo.providerName}}</p>
-            <p class="nombre truncate">{{equipo.name}}</p>
-            <!--imagen-->
-            <div class="xp-ct-img-prop">
-              <div class="xp-type-color">
-                <div class="xp-img-prop">
-                  <img [src]="equipo.main_image_resolutions.main_image_128" alt="" class="img-prop view">
+          <!--loading-->
+          <div class="loading"  *ngIf="!equiposActivos">
+            <div class="preloader-wrapper big active">
+              <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
                 </div>
               </div>
-            </div><!--imagen-->
-            <div class="colores">
-              <ul><!--*ngFor="let color of equiposActivos.colorEquipo"-->
-                <li *ngFor="let color of equipo.colors" class="{{color.name}}"></li>  
-              </ul>
             </div>
-            <div class="boxprecios">
-              <div><span class="titulo">Precio prepago:</span><span class="valor">${{equipo.precio}}</span></div>
+          </div><!--loading-->
+         
+          <div *ngIf="equiposActivos">
+            <div class="col s12 m6 l4 xl3 item" *ngFor="let equipo of equiposActivos"  id="{{equipo.id}}" >
+              <p class="marca">{{equipo.provider.name}}</p>
+              <p class="nombre truncate">{{equipo.name}}</p>
+              <!--imagen-->
+              <div class="xp-ct-img-prop">
+                <div class="xp-type-color">
+                  <div class="xp-img-prop">
+                    <img [src]="equipo.main_image_resolutions.main_image_128" alt="" class="img-prop view">
+                  </div>
+                </div>
+              </div><!--imagen-->
+              <div class="colores">      
+                <ul>
+                  <li *ngFor="let color of equipo.colors" class="{{color.name}}">
+                  </li>  
+                </ul>
+              </div>
+              <div class="boxprecios">
+                <div><span class="titulo">Precio prepago:</span><span class="valor">${{equipo.precio}}</span></div>
+              </div>
+              <button style="margin-top:20px;" (click)="obtenerId(equipo.id)" type="button" class="btn btn_entel modal-trigger" id="id_75" href="#modal" >
+                <a class="modal-trigger" href="#modal">Ver detalle_</a>
+              </button> 
             </div>
-            <button style="margin-top:20px;" (click)="obtenerId(equipo.id)" type="button" class="btn btn_entel modal-trigger" id="id_75" href="#modal" >
-              <a class="modal-trigger" href="#modal">Ver detalle_</a>
-            </button> 
-          </div>  
+          </div>
        </div>
      </div><!--todos-->
  
      <!--multimedia-->
-     <div id="multimedia" class="col s12">
+     <div id="tamano" class="col s12">
        <div class="row">
          <!--filtros-->
          <div class="filtros">
@@ -92,34 +90,38 @@
                </form>
              </div>
            </div><!--filtros-->
+           <div *ngIf="equiposActivos">
+            <div class="col s12 m6 l4 xl3 item" *ngFor="let equipo of equiposActivos"  id="{{equipo.id}}" >
+              <p class="marca">{{equipo.provider.name}}</p>
+              <p class="nombre truncate">{{equipo.name}}</p>
+              <!--imagen-->
+              <div class="xp-ct-img-prop">
+                <div class="xp-type-color">
+                  <div class="xp-img-prop">
+                    <img [src]="equipo.main_image_resolutions.main_image_128" alt="" class="img-prop view">
+                  </div>
+                </div>
+              </div><!--imagen-->
+              <div class="colores">      
+                <ul>
+                  <li *ngFor="let color of equipo.colors" class="{{color.name}}">
+                  </li>  
+                </ul>
+              </div>
+              <div class="boxprecios">
+                <div><span class="titulo">Precio prepago:</span><span class="valor">${{equipo.precio}}</span></div>
+              </div>
+              <button style="margin-top:20px;" (click)="obtenerId(equipo.id)" type="button" class="btn btn_entel modal-trigger" id="id_75" href="#modal" >
+                <a class="modal-trigger" href="#modal">Ver detalle_</a>
+              </button> 
+            </div>
+          </div>
          
        </div>
      </div><!--multimedia-->
  
      <!--energia-->
-     <div id="energia" class="col s12">
-       <div class="row">
-         <!--filtros-->
-         <div class="filtros">
-             <div class="col s12"></div>
-             <div class="col s12 m12 l12 xl12">
-               <form class="center-align">
-                 <div class="input-field col s12 m5 right-align">
-                   <p class="right-align">Buscar por marca:</p>
-                 </div>
-                 <div class="input-field col s12 m5 l3">
-                   <select class="smarcas">
-                     <option value="0" selected>Todas las marcas</option>      
-                   </select>
-                 </div>
-               </form>
-             </div>
-           </div><!--filtros-->     
-       </div>
-     </div><!--energia-->
- 
-     <!--proteccion-->
-     <div id="proteccion" class="col s12">
+     <div id="camarat" class="col s12">
        <div class="row">
          <!--filtros-->
          <div class="filtros">
@@ -137,6 +139,80 @@
                </form>
              </div>
            </div><!--filtros-->
+           <div *ngIf="equiposActivos">
+            <div class="col s12 m6 l4 xl3 item" *ngFor="let equipo of equiposActivos"  id="{{equipo.id}}" >
+              <p class="marca">{{equipo.providerName}}</p>
+              <p class="nombre truncate">{{equipo.name}}</p>
+              <!--imagen-->
+              <div class="xp-ct-img-prop">
+                <div class="xp-type-color">
+                  <div class="xp-img-prop">
+                    <img [src]="equipo.main_image_resolutions.main_image_128" alt="" class="img-prop view">
+                  </div>
+                </div>
+              </div><!--imagen-->
+              <div class="colores">      
+                <ul>
+                  <li *ngFor="let color of equipo.colors" class="{{color.name}}">
+                  </li>  
+                </ul>
+              </div>
+              <div class="boxprecios">
+                <div><span class="titulo">Precio prepago:</span><span class="valor">${{equipo.precio}}</span></div>
+              </div>
+              <button style="margin-top:20px;" (click)="obtenerId(equipo.id)" type="button" class="btn btn_entel modal-trigger" id="id_75" href="#modal" >
+                <a class="modal-trigger" href="#modal">Ver detalle_</a>
+              </button> 
+            </div>
+          </div>     
+       </div>
+     </div><!--energia-->
+ 
+     <!--proteccion-->
+     <div id="camarad" class="col s12">
+       <div class="row">
+         <!--filtros-->
+         <div class="filtros">
+             <div class="col s12"></div>
+             <div class="col s12 m12 l12 xl12">
+               <form class="center-align">
+                 <div class="input-field col s12 m5 right-align">
+                   <p class="right-align">Buscar por marca:</p>
+                 </div>
+                 <div class="input-field col s12 m5 l3">
+                   <select class="smarcas">
+                     <option value="0" selected>Todas las marcas</option>      
+                   </select>
+                 </div>
+               </form>
+             </div>
+           </div><!--filtros-->
+           <div *ngIf="equiposActivos">
+            <div class="col s12 m6 l4 xl3 item" *ngFor="let equipo of equiposActivos"  id="{{equipo.id}}" >
+              <p class="marca">{{equipo.providerName}}</p>
+              <p class="nombre truncate">{{equipo.name}}</p>
+              <!--imagen-->
+              <div class="xp-ct-img-prop">
+                <div class="xp-type-color">
+                  <div class="xp-img-prop">
+                    <img [src]="equipo.main_image_resolutions.main_image_128" alt="" class="img-prop view">
+                  </div>
+                </div>
+              </div><!--imagen-->
+              <div class="colores">      
+                <ul>
+                  <li *ngFor="let color of equipo.colors" class="{{color.name}}">
+                  </li>  
+                </ul>
+              </div>
+              <div class="boxprecios">
+                <div><span class="titulo">Precio prepago:</span><span class="valor">${{equipo.precio}}</span></div>
+              </div>
+              <button style="margin-top:20px;" (click)="obtenerId(equipo.id)" type="button" class="btn btn_entel modal-trigger" id="id_75" href="#modal" >
+                <a class="modal-trigger" href="#modal">Ver detalle_</a>
+              </button> 
+            </div>
+          </div>
          
        </div>
      </div><!--proteccion-->
@@ -147,22 +223,24 @@
  
    </div><!--#contenedor general-->
   
-
-   <div id="modal" class="modal">
+  <!-- Modal -->
+  <div id="modal" class="modal">
     <a href="#!" class="modal-action modal-close waves-effect close"><i class="material-icons">&#xE5CD;</i></a>
     <!--body modal -->
     <div class="modal-content" *ngFor="let equipo of equipoId">
-      <div class="row ficha" id=""><!--*ngIf="equipo.id = "*ngFor="let equipo of equiposActivos *ngIf="!obtenerId(id)"-->
+      <div class="row ficha" id=""><!--*ngIf="equipo.id = "*ngFor="let equipo of equiposActivos "-->
         <div class="col s12 m6">
           <div class="img">
             <img [src]="equipo.main_image_resolutions.main_image_256" alt="" class="img-prop view">
-          </div>    
+          </div>
+         
         </div>
         <div class="col s12 m6">
-          <div class="m marca">{{equipo.providerName}}</div>
+          <div class="m marca">{{equipo.provider.name}}</div>
           <div class="m nombre">{{equipo.name}}</div>
           <!--detalles -->
           <div class="m detalle">
+            <span class="titulo">Características:</span>
             <ul>
               <li>Tamaño de pantalla: {{equipo.screen}}"</li>
               <li>Cámara delantera: {{equipo.frontal_camera}} MP</li>
@@ -184,18 +262,19 @@
           <div class="itemlista">   
             <div><span class="titulo">Precio prepago:</span><span class="valor">${{equipo.precio}}</span></div>
           </div><!--boxprecios -->
-          <!--
+          <!--itemlista-->
           <div class="itemlista">   
               <div class="sticker">
-                  <img [src]="equipo.logoRed" alt="" class="img-prop view">
+                  <img [src]="equipo.sticker.image" alt="" class="img-prop view">
               </div>
-          </div>boxprecios -->
+          </div><!--itemlista -->
 
             <!--<div class="carouselbox"></div>   --> 
         </div>
       </div>
     </div><!--body modal --> 
-  </div>
+  </div><!-- Modal -->
+  
   <!-- Modal -
   <app-modal></app-modal> Modal -->
   
