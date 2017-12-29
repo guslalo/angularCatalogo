@@ -1,99 +1,111 @@
-import { Component, Injectable, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Http } from '@angular/http';
-import { Equipo, proveedormarca, detalleEquipo, stickerm, color } from './models/equipos';
-import { GeneralService } from './services/general.service';
-import * as $ from 'jquery/dist/jquery.min.js';
-declare var $:any;//declaramos variable jquery
+import { Equipo, detalleEquipo } from './models/equipos';
+import { proveedor } from './models/proveedores';
+// import { GeneralService } from './services/general.service';
+// import * as $ from 'jquery/dist/jquery.min.js';
+declare var $:any; // declaramos variable jquery
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./../assets/sass/materialize.scss'],
-  providers:[GeneralService]
-
+  // providers:[GeneralService]
 })
 
 
 export class AppComponent  {
   equiposApi = 'https://manager.rinnolab.cl/catalogue/api/equipment/';
-  proveedoresApi = 'https://manager.rinnolab.cl/catalogue/api/provider/';
-  detealleEquipoApi = "https://manager.rinnolab.cl/catalogue/api/equipmentdetail/";
-  stickerApi = "https://manager.rinnolab.cl/catalogue/api/sticker/";
+  detealleEquipoApi = 'https://manager.rinnolab.cl/catalogue/api/equipmentdetail/' ;
   equipos: Array<Equipo>;
   equiposActivos: Array<Equipo>;
+  salePrice: Array<Equipo>;
   equipoId: Array<Equipo>;
+  //getOneProvider:Array<providerA>;
+  proveedor:Array<any>;
+  idprovider:any;
   equipoDetalle:Array<detalleEquipo>;
-  stickerm:Array<stickerm>;
-  marcaproveedor:Array<proveedormarca>;
-  equipoProveedorId:number;
-  proveedorId:number;
-  coloresEquipo:Array<color>;
-  proveedoresActivos: Array<proveedormarca>;
   textoduro:string;
+  proveedorUnico:any;
+  //firstSalePrice: Array<Equipo>;
 
-  //stickersa:Array<stickerm>;
+  // marcaproveedor:Array<proveedormarca>;
+  // equipoProveedorId:number;
+  // getProveedor:any;
+  // coloresEquipo:Array<color>;
+  // proveedorId:number;
+  // proveedoresActivos: Array<proveedormarca>;
+
   ngOnInit() {
 
   };
 
-  constructor(private http:Http, ){//servicio:GeneralService
+  constructor(private http: Http, ){ // servicio:GeneralService
     this.getEquipos();
-    //this.getProveedor();
+    // this.getProveedor();
     this.getEquipoDetalle();
-    this.textoduro = "{{color.name}}";
-    //this.getSticker();
+    //this.firstSalePrice();
+    this.textoduro = '{{color.name}}';
+    // this.getSticker();
   }
 
-
-  //Traer equipos
+  /*get firstSalePrice() {
+    
+    return this.equipo.equipment_details[0].sale_price || 0;
+  }*/
+  // Traer equipos
   getEquipos(){
     this.http.get(this.equiposApi).subscribe((resp) =>{
       this.equipos = resp.json().results;
-      this.equiposActivos = this.equipos.filter(r => r.is_active == true);
+      this.equiposActivos = this.equipos.filter(r => r.is_active === true);
+      
+      
+      
+      //this.proveedor = this.equipos.filter(r => r.provider);
 
-        if(this.equiposActivos != null){
-          //alert("espera");
-        }
         for (let item of this.equiposActivos){
+   
+          this.proveedorUnico = item.provider.id;
+          //console.log(this.proveedorUnico);
+          var newP = this.proveedorUnico;
 
-          //compara id de provider en equipiactivo y id en proveedores
-           /*var marca:Array<proveedormarca> = this.marcaproveedor.filter(m => m.id == item.provider);
-           item.providerName = marca[0].name;*/
+          for (let item2 of newP){
+              console.log(item2);
+           
+          }
+        
 
-            //trae precio prepago equipo
-            var equipoDetalle:Array<detalleEquipo> = this.equipoDetalle.filter(me => me.equipment == item.id);
-            item.precio = equipoDetalle[0].sale_price;
+          /*for (let item2 of item.equipment_details){
+             if (item2.sale_price < item2.sale_price){
+                console.log(item2.sale_price);
+             }
+          }*/
+            /*var equipoDetalle:Array<detalleEquipo> = this.equipoDetalle.filter(me => me.equipment == item.id);
+            item.precio = equipoDetalle[0].sale_price;*/
 
-            /*var stickerm:Array<stickerm> = this.stickerm.filter(ms => ms.id == item.sticker);
-            item.logoRed = stickerm[0].image; */
+          // compara id de provider en equipiactivo y id en proveedores
+          /*var marca:Array<proveedormarca> = this.marcaproveedor.filter(m => m.id == item.provider);
+          item.providerName = marca[0].name;*/
+
+          // trae precio prepago equipo
+            /*var equipoDetalle:Array<detalleEquipo> = this.equipoDetalle.filter(me => me.equipment == item.id);
+            item.precio = equipoDetalle[0].sale_price;*/
 
         };
-      
+
     });
   }
-
+ 
   obtenerId(idSeleccionado){
-    this.equipoId = this.equipos.filter(r => r.id == idSeleccionado);
+    this.equipoId = this.equipos.filter(r => r.id === idSeleccionado);
   }
 
-  //Trae detalle equipo
+  // Trae detalle equipo
   getEquipoDetalle(){
     this.http.get(this.detealleEquipoApi).subscribe((resp2) =>{
       this.equipoDetalle = resp2.json().results;
     });
   }
-
-  getSticker(){
-    this.http.get(this.stickerApi).subscribe((resp) =>{
-      this.stickerm = resp.json().results;
-    });
-  }
-  //Traer proveedor
-  /*getProveedor(){
-    this.http.get(this.proveedoresApi).subscribe((resp2) =>{
-      this.marcaproveedor = resp2.json().results;
-    });
-  }*/
 
 }

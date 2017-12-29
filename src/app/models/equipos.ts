@@ -1,6 +1,4 @@
 
-
-
 export class MainImageResolutions {
     main_image_256: string;
     main_image_32: string;
@@ -21,8 +19,6 @@ export class Equipo {
     is_active: boolean;
     main_image: string;
     cover_image?: any;
-    created: Date;
-    modified: Date;
     processor: string;
     description: string;
     screen: string;
@@ -34,27 +30,34 @@ export class Equipo {
     organization: number;
     sticker: number;
     logoRed:any;
-    provider: number;
-    providerName:string;
+    provider: providerA;
     background_color: any;
     precio:number;
+    customer_price:any;
+    sale_price:number;
     imagered:any;
+    equipment_details:equipment_details[];
 }
+
+
+export class equipment_details {
+    sale_price:number;
+}
+
+export class providerA {
+    name:string;
+    id:number;
+    logo:string;
+}
+
 
 export class detalleEquipo {
     equipment:number;
     sale_price:number;
 }
 
-export class proveedormarca {
-    name: string;
-    id:number;
-}
 
-export class stickerm {
-    image: string; 
-    id: number;    
-}
+
 
 export class color {
     id: number;

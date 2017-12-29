@@ -83,7 +83,7 @@ $(document).ready(function(){
     //
     setTimeout(function(){
         $('select').material_select();
-      },100);
+      },200);
    
    
        

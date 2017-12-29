@@ -11948,6 +11948,8 @@ header {
       width: 49.3%;
       display: inline-block;
       vertical-align: top; }
+      .item .boxprecios > div:nth-child(1) {
+        display: inline-block !important; }
       .item .boxprecios > div .valor {
         width: 100%;
         display: inline-block;
@@ -11955,7 +11957,8 @@ header {
         font-weight: bold;
         letter-spacing: -0.03em;
         line-height: 1;
-        color: #ff6700; }
+        color: #ff6700;
+        /*display: none;*/ }
         .item .boxprecios > div .valor.dos {
           font-size: 24px;
           line-height: 36px;
@@ -12285,10 +12288,18 @@ header {
     display: inline-block;
     padding: 20px 0px 20px 0px;
     /*border-bottom: 2px solid #ccc;*/ }
+    .modal .itemlista .gb {
+      color: #666;
+      width: 80px;
+      display: inline-block;
+      font-weight: normal;
+      font-size: 26px; }
+    div .modal .itemlista:nth-child(1) {
+      margin-top: 10px; }
     .modal .itemlista .valor {
       width: 100%;
       display: inline-block;
-      font-size: 34px;
+      font-size: 28px;
       font-weight: bold;
       letter-spacing: -0.03em;
       line-height: 1;

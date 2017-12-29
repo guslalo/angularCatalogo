@@ -270,7 +270,11 @@ header {
 			width:49.3%;
 			display: inline-block;
 			vertical-align: top;
+			&:nth-child(1){
+				display:inline-block !important;
+			}
 			.valor {
+				
 				width: 100%;
 				display: inline-block;
 				font-size:34px;
@@ -278,12 +282,16 @@ header {
 				letter-spacing: -0.03em;
 				line-height: 1;
 				color: #ff6700;
+				/*display: none;*/
+				
 				&.dos {
 					font-size: 24px;
 					line-height: 36px;
 					color: #999;
 				}
+				
 			}
+			
 		}
 		
 	}
@@ -692,15 +700,27 @@ header {
 		border-top: 2px solid #ccc;
 		display: inline-block;
 		padding: 20px 0px 20px 0px;
+		.gb {
+			color: #666;
+			width:80px;
+			display: inline-block;
+			font-weight:normal;
+			font-size: 26px;
+		}
+		div &:nth-child(1){
+			margin-top: 10px;
+		}
 		
 		.valor {
 			width: 100%;
 			display: inline-block;
-			font-size: 34px;
+			font-size: 28px;
+			
 			font-weight: bold;
 			letter-spacing: -0.03em;
 			line-height: 1;
 			color: #ff6700;
+			
 		}
 		/*border-bottom: 2px solid #ccc;*/
 	}
